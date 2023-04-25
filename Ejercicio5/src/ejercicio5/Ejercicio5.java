@@ -4,6 +4,8 @@
  */
 package ejercicio5;
 
+import Servicios.ServPais;
+
 /**
  *
  * @author irina
@@ -26,7 +28,12 @@ public class Ejercicio5 {
     *al usuario.
     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        ServPais service = new ServPais();
+        
+        service.ingresarPais();
+        service.mostrarPais();
+        service.eliminarPais();
+        service.mostrarPais();
     }
     
 }
