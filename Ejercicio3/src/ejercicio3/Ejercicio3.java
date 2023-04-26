@@ -31,15 +31,8 @@ public class Ejercicio3 {
     public static void main(String[] args) {
         // TODO code application logic here
         ServAlumno servicio = new ServAlumno();
-        //Scanner
-        Scanner leer = new Scanner(System.in);
-        servicio.crearAlumno();
-        System.out.println("--------------------------------------------------");
-        System.out.println("                CALCULAR NOTA FINAL               ");
-        System.out.println("--------------------------------------------------");
-        System.out.print("NOBRE ALUMNO: ");
-        String nombreAlum = leer.nextLine();
-        servicio.notaFinal(nombreAlum);
+       
+        servicio.pedirAlumno();
         
         
     }

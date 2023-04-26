@@ -40,7 +40,7 @@ public class ServAlumno {
             //Lista que guarde las notas que va a llenar la lista principal
             ArrayList<Double> notasS = new ArrayList();
             for (int i = 1; i <= 3; i++) {
-                System.out.print(" NOTA #" + i + ": ");
+                System.out.print("    NOTA #" + i + ": ");
                 notasS.add(scaner.nextDouble());
             }
 
@@ -53,34 +53,68 @@ public class ServAlumno {
         } while (seleccion1.charAt(0) == 's');
     }
 
-    public void notaFinal(String nombreAlumnoU) {
-        //INSTANCIAR EL ITERADOR
-        Iterator<Alumno> itAlum = alumnos.iterator();
+    public void notaFinal(int nombreAlumnoU) {
         //VARIABLE QUE GUARDA LAS 3 NOTAS
         double sum = 0;
         //Variable para calcular el promedio
         double prom;
-        //booleano para saber si se encuentra
-        boolean bandera = false;
-        while (itAlum.hasNext()) {
-            if (itAlum.next().getNombre().equals(nombreAlumnoU)) {
-                for (int i = 0; i < 3; i++) {
-                    sum += itAlum.next().getNotas().get(i);
-                }
-                bandera = true;
-                break;
-            }
+
+        for (int i = 0; i < 3; i++) {
+            sum += alumnos.get(nombreAlumnoU).getNotas().get(i);
         }
-        if (bandera) {
-            prom = sum / 3;
-            System.out.println("--------------------------------------------------");
-            System.out.println("EL PROMEDIO FINAL DEL ALUMNO ES: " + prom);
-            System.out.println("--------------------------------------------------");
-        }else{
-            System.out.println("--------------------------------------------------");
-            System.out.println("ESTUDIANTE NO ENCONTRADO");
-        }
+        prom = sum / 3;
+        System.out.println("--------------------------------------------------");
+        System.out.print(" EL PROMEDIO FINAL DE *" + 
+                alumnos.get(nombreAlumnoU).getNombre().toUpperCase() + 
+                "* ES: ");
+        System.out.printf("%.2f", prom);
+        System.out.println("");
+        System.out.println("--------------------------------------------------");
 
     }
 
+    public void pedirAlumno() {
+        crearAlumno();
+        int opcM;
+        do {
+            System.out.println("--------------------------------------------------");
+            System.out.println("                 MENU DE OPCIONES                 ");
+            System.out.println("--------------------------------------------------");
+            System.out.println(" 1. AGREGAR ALUMNO");
+            System.out.println(" 2. NOTA FINAL POR ALUMNO");
+            System.out.println(" 3. SALIR");
+            System.out.println("--------------------------------------------------");
+            System.out.print("   INGRESE UNA OPCION: ");
+            opcM = scaner.nextInt();
+            switch (opcM) {
+                case 1:
+                    scaner.nextLine();
+                    crearAlumno();
+                    break;
+                case 2:
+                    System.out.println("--------------------------------------------------");
+                    System.out.println("                CALCULAR NOTA FINAL               ");
+                    System.out.println("--------------------------------------------------");
+                    mostrarAlumnos();
+                    System.out.print("SELECCIONE UN ALUMNO: ");
+                    int nombreAlum = scaner.nextInt();
+                    notaFinal((nombreAlum - 1));
+                    break;
+                case 3:
+                    break;
+                default:
+                    System.out.println("---------------------------------------------------");
+                    System.out.println("OPCION INCORRECTA, INTENTELO NUEVAMENTE");;
+            }
+        } while (opcM != 3);
+
+    }
+
+    public void mostrarAlumnos() {
+        int cont = 1;
+        for (Alumno aux : alumnos) {
+            System.out.println(cont + ".-  " + aux.getNombre());
+            cont++;
+        }
+    }
 }
