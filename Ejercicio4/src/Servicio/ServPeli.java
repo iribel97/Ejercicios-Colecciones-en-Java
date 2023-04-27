@@ -112,15 +112,18 @@ public class ServPeli {
     *           pantalla.
      */
     public void peliculasPorDuracionMayor() {
-        // Comparador personalizado para ordenar por duración de mayor a menor
-        Comparator<Pelicula> comparadorDuracion = new Comparator<Pelicula>() {
-            @Override
-            public int compare(Pelicula p1, Pelicula p2) {
-                return Integer.compare(p2.getMovieTime(), p1.getMovieTime());
-            }
-        };
-        // Ordenar la lista de películas usando el comparador
-        Collections.sort(movies, comparadorDuracion);
+        /*
+            // Comparador personalizado para ordenar por duración de mayor a menor
+                Comparator<Pelicula> comparadorDuracion = new Comparator<Pelicula>() {
+                    @Override
+                    public int compare(Pelicula p1, Pelicula p2) {
+                        return Integer.compare(p2.getMovieTime(), p1.getMovieTime());
+                    }
+                };
+            // Ordenar la lista de películas usando el comparador
+                Collections.sort(movies, comparadorDuracion);
+        */
+        movies.sort(Pelicula.asc);
         // Mostrar las películas ordenadas por duración
         mosrarPelis();
     }
@@ -130,50 +133,60 @@ public class ServPeli {
     *           pantalla.
      */
     public void peliculasPorDuracionMenor() {
-        // Comparador personalizado para ordenar por duración de mayor a menor
-        Comparator<Pelicula> comparadorDuracion = new Comparator<Pelicula>() {
-            @Override
-            public int compare(Pelicula p1, Pelicula p2) {
-                return Integer.compare(p1.getMovieTime(), p2.getMovieTime());
-            }
-        };
-        // Ordenar la lista de películas usando el comparador
-        Collections.sort(movies, comparadorDuracion);
+        /* OTRA FORMA
+            // Comparador personalizado para ordenar por duración de mayor a menor
+                 Comparator<Pelicula> comparadorDuracion = new Comparator<Pelicula>() {
+                    @Override
+                    public int compare(Pelicula p1, Pelicula p2) {
+                        return Integer.compare(p1.getMovieTime(), p2.getMovieTime());
+                    }
+                };
+            // Ordenar la lista de películas usando el comparador
+                //Collections.sort(movies, comparadorDuracion);
+         */
+        movies.sort(Pelicula.desc);
         // Mostrar las películas ordenadas por duración
         mosrarPelis();
     }
 
     /*
     *       • Ordenar las películas por título, alfabéticamente y mostrarlo en pantalla.
-    */
+     */
     public void peliculasPorTitulo() {
-        // Definir un Comparator que compare las películas por título, alfabéticamente
-        Comparator<Pelicula> comparadorPorTitulo = new Comparator<Pelicula>() {
-            @Override
-            public int compare(Pelicula p1, Pelicula p2) {
-                return p1.getTitle().compareTo(p2.getTitle());
-            }
-        };
-        // Ordenar la lista de películas usando el comparador
-        Collections.sort(movies, comparadorPorTitulo);
+        /*
+            // Definir un Comparator que compare las películas por título, alfabéticamente
+                Comparator<Pelicula> comparadorPorTitulo = new Comparator<Pelicula>() {
+                    @Override
+                    public int compare(Pelicula p1, Pelicula p2) {
+                        return p1.getTitle().compareTo(p2.getTitle());
+                    }
+                };
+            // Ordenar la lista de películas usando el comparador
+                    Collections.sort(movies, comparadorPorTitulo);
+         */
+        
+        movies.sort(Pelicula.compTitulo);
         // Mostrar las películas ordenadas por duración
         mosrarPelis();
     }
-    
+
     /*
     *       • Ordenar las películas por director, alfabéticamente y mostrarlo en pantalla.
-    */
-    
-    public void peliculasPorDirect(){
-        // Definir un Comparator que compare las películas por Director, alfabéticamente
-        Comparator<Pelicula> comparadorPorDirector = new Comparator<Pelicula>() {
-            @Override
-            public int compare(Pelicula p1, Pelicula p2) {
-                return p1.getDirector().compareTo(p2.getDirector());
-            }
-        };
+     */
+    public void peliculasPorDirect() {
+        /*
+            // Definir un Comparator que compare las películas por Director, alfabéticamente
+                Comparator<Pelicula> comparadorPorDirector = new Comparator<Pelicula>() {
+                    @Override
+                    public int compare(Pelicula p1, Pelicula p2) {
+                        return p1.getDirector().compareTo(p2.getDirector());
+                    }
+                };
         // Ordenar la lista de películas usando el comparador
-        Collections.sort(movies, comparadorPorDirector);
+                Collections.sort(movies, comparadorPorDirector);
+        */
+        
+        movies.sort(Pelicula.compDirector);
         // Mostrar las películas ordenadas por duración
         mosrarPelis();
     }

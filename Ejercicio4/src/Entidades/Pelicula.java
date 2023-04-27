@@ -4,14 +4,17 @@
  */
 package Entidades;
 
+import java.util.Comparator;
+
 /**
  *
  * @author irina
  */
 public class Pelicula {
+
     /*
     *tendremos una clase Pelicula con el título, director y duración de la película (en horas).
-    */
+     */
     private String title;
     private String director;
     private int movieTime;
@@ -48,7 +51,32 @@ public class Pelicula {
     public void setMovieTime(int movieTime) {
         this.movieTime = movieTime;
     }
-    
-    
-    
+
+    public static Comparator<Pelicula> asc = new Comparator<Pelicula>() {
+        @Override
+        public int compare(Pelicula p1, Pelicula p2) {
+            return Integer.compare(p2.getMovieTime(), p1.getMovieTime());
+        }
+    };
+
+    public static Comparator<Pelicula> desc = new Comparator<Pelicula>() {
+        @Override
+        public int compare(Pelicula p1, Pelicula p2) {
+            return Integer.compare(p1.getMovieTime(), p2.getMovieTime());
+        }
+    };
+
+    public static Comparator<Pelicula> compTitulo = new Comparator<Pelicula>() {
+        @Override
+        public int compare(Pelicula p1, Pelicula p2) {
+            return p1.getTitle().compareTo(p2.getTitle());
+        }
+    };
+
+    public static Comparator<Pelicula> compDirector = new Comparator<Pelicula>() {
+        @Override
+        public int compare(Pelicula p1, Pelicula p2) {
+            return p1.getDirector().compareTo(p2.getDirector());
+        }
+    };
 }
