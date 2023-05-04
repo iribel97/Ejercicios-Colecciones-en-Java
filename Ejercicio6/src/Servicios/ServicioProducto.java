@@ -157,7 +157,8 @@ public class ServicioProducto {
         String nombrePM;
         //variable del nuevo precio
         double nuevoP;
-
+        
+        scaner.nextLine();
         /*PEDIR AL USUARIO ---------------------------------------------------------*/
         System.out.print("INGRESE EL NOMBRE DEL PRODUCTO A MODIFICAR EL PRECIO: ");
         nombrePM = scaner.nextLine();
