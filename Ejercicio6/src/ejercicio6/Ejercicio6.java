@@ -37,9 +37,9 @@ public class Ejercicio6 {
             System.out.println("--------------------------------------------------");
             System.out.println("                 PRODUCTO #"+cont);
             System.out.println("--------------------------------------------------");
-            scaner.nextLine();
+            
             service.crearProducto();
-            scaner.nextLine();
+            
             cont++;
         } while (cont <= cant);
         

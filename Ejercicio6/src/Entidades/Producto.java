@@ -4,7 +4,8 @@
  */
 package Entidades;
 
-import java.util.Objects;
+import java.util.HashMap;
+//import java.util.Objects;
 
 /**
  *
@@ -17,33 +18,20 @@ public class Producto {
     *productos que venderemos y el precio que tendrán.
      */
 
-    private String nombre;
+    private HashMap<String, Double> product = new HashMap();
 
     public Producto() {
     }
 
-    public Producto(String nombre) {
-        this.nombre = nombre;
+    public HashMap<String, Double> getProduct() {
+        return product;
     }
 
-    public String getNombre() {
-        return nombre;
+    public void setProduct(String nombre, Double precio) {
+        this.product.put(nombre, precio);
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
     
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Producto producto = (Producto) o;
-        return Objects.equals(nombre, producto.nombre);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(nombre);
-    }
+    
 }
